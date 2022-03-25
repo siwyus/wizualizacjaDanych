@@ -1,70 +1,141 @@
-def is_even(liczba):
-	return liczba % 2 == 0
+# class Ksztalty:
+# 	def __init__(self, x, y):
+# 		self.x = x
+# 		self.y = y
+# 		self.opis = 'Klasa dla podstawowych kształtów'
+#
+# 	def pole(self):
+# 		return self.x * self.y
+#
+# 	def obwod(self):
+# 		return 2 * (self.x + self.y)
+#
+# 	def dodaj_opis(self, tekst):
+# 		self.opis = tekst
+#
+# 	def skalowanie(self, czynnik):
+# 		self.x = self.x * czynnik
+# 		self.y = self.y * czynnik
+#
+#
+# class Kwadrat(Ksztalty):
+# 	def __init__(self, x):
+# 		self.x = x
+# 		self.y = x
+#
+# 	def __str__(self):
+# 		return 'kwadrat o boku {}'.format(self.x)
+#
+# class KwadratLiteral(Kwadrat):
+# 	def pole(self):
+# 		return 3 * self.x * self.y
+#
+# 	def obwod(self):
+# 		return 8 * self.x
+#
+#
+# kwadrat = Kwadrat(5)
+# print(kwadrat.__str__())
+# print(kwadrat.pole())
+# print(kwadrat.obwod())
+#
+# # print(kwadrat.opis)
+# kwadrat.dodaj_opis('Ta figura to kwadrat')
+# print(kwadrat.opis)
+#
+# kwadrat.skalowanie(0.3)
+# print(kwadrat.pole())
+# print(kwadrat.obwod())
+#
+# litera_l = KwadratLiteral(5)
+# print(litera_l.pole())
+# print(litera_l.obwod())
+#
+# litera_l.dodaj_opis('Kwadraty ułożone w literę L')
+# print(litera_l.opis)
+#
+# litera_l.skalowanie(0.3)
+# print(litera_l.pole())
+# print(litera_l.obwod())
+#
 
 
-def show_exercise_number(number):
-	print('Zadanie %d' % number)
+# class Osoba:
+# 	def __init__(self, imie, nazwisko):
+# 		self.imie = imie
+# 		self.nazwisko = nazwisko
+#
+# 	def przestaw_sie(self):
+# 		return 'Nazywam się {} {}'.format(self.imie, self.nazwisko)
+#
+#
+# class Pracownik():
+# 	def __init__(self, pensja):
+# 		# super().__init__(imie, nazwisko)
+# 		# Osoba.__init__(self, imie, nazwisko)
+# 		self.pensja = pensja
+#
+# 	def przestaw_sie(self):
+# 		return 'Nazywam się {} {} i zarabiam {}'.format(self.imie, self.nazwisko, self.pensja)
+#
+#
+# class Menadzer(Osoba, Pracownik):
+# 	def __init__(self, imie, nazwisko, pensja):
+# 		Osoba.__init__(self, imie, nazwisko)
+# 		Pracownik.__init__(self, pensja)
+#
+# 	def przestaw_sie(self):
+# 		return 'Nazywam się {} {}, jestem menadżerem i zarabiam {}'.format(self.imie, self.nazwisko, self.pensja)
+#
+#
+# # jozek = Pracownik('Józef', 'Bajka', 2000)
+# adrian = Menadzer('Adrian', 'Mikulski', 10000)
+#
+# # print(jozek.przestaw_sie())
+# print(adrian.przestaw_sie())
+
+# for i in range(1, 10):
+# 	print(i)
+
+# imie = 'Reks'
+#
+# it = iter(imie)
+# print(it)
+# print(next(it))
+# print(next(it))
+# print(next(it))
+# print(next(it))
+# print(next(it))
+
+# class Wspak:
+# 	def __init__(self, data):
+# 		self.data = data
+# 		self.index = len(data)
+#
+# 	def __iter__(self):
+# 		return self
+#
+# 	def __next__(self):
+# 		if self.index == 0:
+# 			raise StopIteration
+# 		self.index -= 1
+# 		return self.data[self.index]
+#
+# napis = Wspak('Reks')
+# print(napis.__next__())
+# print(napis.__next__())
+#
+# for a in napis:
+# 	print(a)
+
+def reverse(data):
+	for a in range(len(data)-1, -1, -1):
+		yield data[a]
 
 
-# Zadanie 1
-show_exercise_number(1)
-A = [1 - x for x in range(1, 10)]
-B = [4 ** x for x in range(0, 7)]
-C = [x for x in B if is_even(x)]
+gen = reverse('Napis')
+print(gen)
+print(next(gen))
+print(next(gen))
+print(next(gen))
 
-print(A)
-print(B)
-print(C)
-
-# Zadanie 2
-show_exercise_number(2)
-
-from numpy import random
-
-random_number_array = random.randint(100, size=10)
-
-only_even_numbers = [x for x in random_number_array if is_even(x)]
-
-print(only_even_numbers)
-
-# Zadanie 3
-show_exercise_number(3)
-by_piece = 'sztuki'
-products_dictionary = {'mąka': 'kg', 'chleb': by_piece, 'jajka': by_piece, 'szynka': 'kg'}
-
-only_products_by_piece = [key for key, value in products_dictionary.items() if value == by_piece]
-
-print(only_products_by_piece)
-
-# Zadanie 4
-show_exercise_number(4)
-
-
-def is_right_triangle(a, b, c):
-	return a ** 2 + b ** 2 == c ** 2
-
-
-print(is_right_triangle(3, 4, 5))
-
-# Zadanie 5
-show_exercise_number(5)
-
-
-def calc_trapezoid_field(base_top=5, base_bottom=10, height=7):
-	return (base_top + base_bottom) * height / 2
-
-
-print(calc_trapezoid_field())
-
-
-# Zadanie 6
-show_exercise_number(6)
-
-
-def calc_products_of_the_sequence(initial_value=1, quotient=4, elements_amount=10):
-	sequence = [initial_value]
-	for x in range(0, elements_amount - 1):
-		sequence.append(x * quotient)
-	print(sequence)
-
-calc_products_of_the_sequence()
