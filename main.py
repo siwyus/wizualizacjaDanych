@@ -128,14 +128,14 @@
 # for a in napis:
 # 	print(a)
 
-def reverse(data):
-	for a in range(len(data)-1, -1, -1):
-		yield data[a]
-
-
-gen = reverse('Napis')
-print(gen)
-print(next(gen))
-print(next(gen))
-print(next(gen))
+# def reverse(data):
+# 	for a in range(len(data)-1, -1, -1):
+# 		yield data[a]
+#
+#
+# gen = reverse('Napis')
+# print(gen)
+# print(next(gen))
+# print(next(gen))
+# print(next(gen))
 
