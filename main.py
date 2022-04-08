@@ -101,9 +101,9 @@ import numpy as np
 # print(mat[2:6, 1:3])
 # print(mat[:, range(2, 5, 1)])
 
-x = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]])
-print(x)
-rows = np.array([[0, 0], [3, 3]])
-cols = np.array([[0, 2], [0, 2]])
-y = x[rows, cols]
-print(y)
+# x = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]])
+# print(x)
+# rows = np.array([[0, 0], [3, 3]])
+# cols = np.array([[0, 2], [0, 2]])
+# y = x[rows, cols]
+# print(y)
