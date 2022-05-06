@@ -48,8 +48,17 @@ print(zamowienia.Sprzedawca.unique())
 print('\n5 najwwiekszych wartosci zamowien\n')
 print(zamowienia.sort_values(by='Utarg', ascending=False).head(5))
 print('\nilosc zamowien zlozonych przez kazdego sprzedawce\n')
-zamowienia['ilosc zamowien'] = zamowienia.groupby(by='Sprzedawca')['Sprzedawca'].transform('count')
-print(zamowienia[['Sprzedawca', 'ilosc zamowien']])
+print(zamowienia.groupby(by='Sprzedawca').size())
 print('\nsuma zamowien dla kazdego kraju\n')
-zamowienia['suma zamowienia'] = zamowienia.groupby(by='Kraj').Utarg.sum()
-print(zamowienia)
+print(zamowienia.groupby(by='Kraj').agg({'Utarg': ['sum']}))
+print('\nsuma zamówień w roku 2005 dla sprzedawcow z Polski\n')
+print(zamowienia[(zamowienia.Kraj == 'Polska') & (zamowienia['Data zamowienia'] >= '2005-01-01') & (
+		zamowienia['Data zamowienia'] <= '2005-12-31')].agg(
+	{'Utarg': ['sum']}))
+print('\nsrednia kwota zamowien w 2004roku\n')
+print(zamowienia[(zamowienia['Data zamowienia'].str[:4] == '2004')].agg({'Utarg': ['mean']}))
+
+s = zamowienia[(zamowienia['Data zamowienia'].str[:4] == '2004')]
+s2 = zamowienia[(zamowienia['Data zamowienia'].str[:4] == '2005')]
+s.to_csv('2004.csv', index=False)
+s2.to_csv('2005.csv', index=False)
